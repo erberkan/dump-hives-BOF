@@ -1,6 +1,6 @@
 # dump-hives-BOF
 
-If user has ``SeBackupPriv`` privilege you BOF is dump SYSTEM, SYSTEM and SECURITY hives under C:\ drive.
+If user has ``SeBackupPriv`` privilege, BOF dumps SYSTEM, SYSTEM and SECURITY hives under C:\ drive.
 
 ### Usage:
 ``dump-hives [target dc] [DOMAIN\user] [password]``
