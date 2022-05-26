@@ -34,6 +34,6 @@ alias dump-hives {
 
 beacon_command_register(
     "dump-hives", 
-    "Dump SYSTEM, SYSTEM and SECURITY hives under C:\ drive.", 
+    "Dump SAM, SYSTEM and SECURITY hives under C:\ drive.", 
     "Synopsis: dump-hives [target dc] [DOMAIN\\user] [password]"
 );
