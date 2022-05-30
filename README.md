@@ -3,7 +3,7 @@
 If user has ``SeBackupPriv`` privilege, BOF dumps SAM, SYSTEM and SECURITY hives under C:\ drive.
 
 ### Usage:
-``dump-hives [target dc] [DOMAIN\user] [password]``
+``dump-hives [target] [DOMAIN\user] [password]``
 
 ![](https://raw.githubusercontent.com/erberkan/dump-hives-BOF/main/dump-hives.png)
 
