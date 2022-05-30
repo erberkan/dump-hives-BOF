@@ -8,15 +8,15 @@ alias dump-hives {
 
     btask($1, "\cBdump-hives-BOF | Berkan ER // B3R-SEC | github.com/erberkan\n");
 
-    if (size(@_) == 4) {
-
+    if (size(@_) != 4) {
+        berror($1, "Incorrect usage!");
+        return;
+    } else {
         $target             = $2;
         ($domain, $user)    = split('\\\\', $3);
         $pass               = $4;  
 
         btask($1, "Create token as $user");
-    } else {
-        berror($1, "Incorrect usage!");
     }
 
     $handle = openf(script_resource("dump-hives.o"));
